@@ -41,9 +41,9 @@ Los miembros del equipo deben registrarse y verificar su correo primero. Desde E
 
 El frontend es estático, no requiere PHP, cPanel ni Workers para servir las páginas.
 
-1. Sube este proyecto a tu repositorio, sin `.env.local` ni credenciales. No se creó ni se hizo push a un repositorio automáticamente.
+1. Repositorio: https://github.com/Edyckzon/events-osz, rama `main`. `.env.local` y credenciales quedan excluidos.
 2. Cloudflare → Workers & Pages → Create → Pages → conecta el repositorio.
-3. Build: `npm run build`. Output: `dist`. Root: carpeta del proyecto. Variable `NODE_VERSION=24`.
+3. Build: `npm run build:ci`. Output: `dist`. Root: carpeta del proyecto. Variable `NODE_VERSION=24`. Este comando impide publicar si fallan las pruebas unitarias, de base de datos o la compilación.
 4. Define las tres variables públicas `VITE_*` de `.env.example` en el entorno de producción de Pages y vuelve a desplegar.
 5. Ajusta Site URL, redirects de Supabase y dominios de Turnstile con la URL `https://...pages.dev` o tu dominio final.
 6. Comprueba HTTPS, `/auth/callback`, recargar `/tickets` directamente y las cabeceras de seguridad. `public/_redirects` y `public/_headers` se copian al build.
